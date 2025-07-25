@@ -22,7 +22,8 @@ const PORT = process.env.PORT || 4000;
 
 sequelize.sync({ alter: true }).then(() => {
   console.log("✅ Base de datos conectada");
-  app.listen(PORT, () => {
+  const PORT = Number(process.env.PORT) || 4000;
+  app.listen(PORT, '0.0.0.0',() => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);
   });
 }).catch(err => console.error("❌ Error al conectar BD:", err));
